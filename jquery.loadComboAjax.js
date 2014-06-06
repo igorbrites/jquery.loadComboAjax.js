@@ -5,6 +5,10 @@
  */
 
 ;(function ($, window, undefined) {
+	$.isChosen = function(obj) {
+		return document.getElementById(obj.id.replace('-', '_') + '_chosen') !== null;
+	};
+
 	var
         defaults = {
             url: '',
@@ -15,12 +19,8 @@
             cache: null
         },
 
-		isChosen = function(obj) {
-			return document.getElementById(obj.id.replace('-', '_') + '_chosen') !== null;
-		},
-
         setFirstOption = function($obj, message) {
-	        var isChosen = isChosen($obj[0]);
+	        var isChosen = $.isChosen($obj[0]);
             $obj[0].options.length = 0;
 
             if (isChosen) {
@@ -33,7 +33,7 @@
 
         doPopulate = function(json, parameters, $obj) {
             var opt = $obj[0].options,
-                isChosen = isChosen($obj[0]),
+                isChosen = $.isChosen($obj[0]),
                 node,
                 value,
                 label,
@@ -86,7 +86,7 @@
 
 		var comboOptions = obj.options,
             $obj = $(obj),
-			isChosen = isChosen($obj[0]);
+			isChosen = $.isChosen($obj[0]);
 
 		$.ajax({
 			type: 'post',
