@@ -120,7 +120,7 @@
 			 *  }
 			 */
 			success: function (json) {
-                params.cache.object.set(params.cache.key, json);
+                params.cache && params.cache.object.set(params.cache.key, json);
                 doPopulate(json, params, $obj);
 			},
 
