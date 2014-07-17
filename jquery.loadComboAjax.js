@@ -6,7 +6,7 @@
 
 ;(function ($, window, undefined) {
 	$.isChosen = function(obj) {
-		return document.getElementById(obj.id.replace('-', '_') + '_chosen') !== null;
+		return $(obj).next().hasClass('chosen-container');
 	};
 
 	var
